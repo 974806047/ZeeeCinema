@@ -1,6 +1,7 @@
 package com.hzyc.Zee.bean;
 
 public class Ad {
+	int aa;
 	int ad;
 	String name;
 	String title;
