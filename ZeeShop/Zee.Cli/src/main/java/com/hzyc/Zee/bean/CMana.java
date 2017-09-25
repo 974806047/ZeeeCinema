@@ -1,6 +1,6 @@
 package com.hzyc.Zee.bean;
 
-public class Cmana {
+public class CMana {
 	int id;
 	String userName;
 	String password;
