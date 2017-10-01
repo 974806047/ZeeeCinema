@@ -1,10 +1,10 @@
 package com.hzyc.Zee.bean;
-//放映厅类型信息类
-public class HType {	
+//会员类型信息
+public class HYType {
 	int id;
-	int cinemaId;
-	String cinemaName;
 	String name;
+	String cinemaName;
+	int cinemaId;
 	String tjjl;
 	String xgjl;
 	public int getId() {
@@ -13,11 +13,11 @@ public class HType {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getCinemaId() {
-		return cinemaId;
+	public String getName() {
+		return name;
 	}
-	public void setCinemaId(int cinemaId) {
-		this.cinemaId = cinemaId;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getCinemaName() {
 		return cinemaName;
@@ -25,11 +25,11 @@ public class HType {
 	public void setCinemaName(String cinemaName) {
 		this.cinemaName = cinemaName;
 	}
-	public String getName() {
-		return name;
+	public int getCinemaId() {
+		return cinemaId;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setCinemaId(int cinemaId) {
+		this.cinemaId = cinemaId;
 	}
 	public String getTjjl() {
 		return tjjl;
@@ -45,7 +45,7 @@ public class HType {
 	}
 	@Override
 	public String toString() {
-		return "HType [id=" + id + ", cinemaId=" + cinemaId + ", cinemaName=" + cinemaName + ", name=" + name
+		return "HYType [id=" + id + ", name=" + name + ", cinemaName=" + cinemaName + ", cinemaId=" + cinemaId
 				+ ", tjjl=" + tjjl + ", xgjl=" + xgjl + "]";
 	}
 	

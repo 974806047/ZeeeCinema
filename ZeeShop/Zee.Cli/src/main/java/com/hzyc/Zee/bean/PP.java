@@ -1,5 +1,5 @@
 package com.hzyc.Zee.bean;
-
+//排片信息类
 public class PP {
 	int id;
 	int movieId;
