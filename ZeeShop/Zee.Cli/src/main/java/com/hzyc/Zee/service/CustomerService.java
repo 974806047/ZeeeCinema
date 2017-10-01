@@ -79,7 +79,7 @@ public interface CustomerService {
 	 * @date   2017年9月20日	
 	 * 批量删除影评
 	 */
-	public int deleteYingPing(String yingPingNameList);
+	public int deleteYingPing(String yingPingIdList);
 	/**
 	 * @author Zeeephr
 	 * @date   2017年9月20日	
