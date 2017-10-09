@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.hzyc.Zee.bean.Ad;
 import com.hzyc.Zee.bean.CMana;
 import com.hzyc.Zee.bean.Cinema;
@@ -13,10 +16,14 @@ import com.hzyc.Zee.bean.Movie;
 import com.hzyc.Zee.bean.Page;
 import com.hzyc.Zee.bean.User;
 import com.hzyc.Zee.bean.YingPing;
+import com.hzyc.Zee.dao.ManaMapper;
 import com.hzyc.Zee.service.ManaService;
 
 public class ManaServiceImpl implements ManaService{
-
+	
+	@Autowired
+	ManaMapper manaMapper;
+	
 	@Override
 	public Mana login(Mana mana,HttpServletRequest request) {
 		// TODO Auto-generated method stub
@@ -48,25 +55,63 @@ public class ManaServiceImpl implements ManaService{
 	@Override
 	public boolean haveRight(String userName, String rightName) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean bol=false;
+		try{
+			Mana mana=manaMapper.getManaByUserName(userName);
+			String manaRight=mana.getRight();
+			if(manaRight.contentEquals(rightName)){//权限包含了就有这个权限
+				bol=true;
+			}
+			if(mana.getHighRight()==1){//有最高权限 也就有这个权限
+				bol = true;
+			}
+			
+		}
+		catch(Exception e){	
+			e.printStackTrace();
+		}
+		return bol;
 	}
 
 	@Override
 	public Mana insertMana(Mana mana) {
 		// TODO Auto-generated method stub
-		return null;
+		try{manaMapper.insertMana(mana);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		return mana;
 	}
 
 	@Override
 	public int deleteMana(int manaId) {
 		// TODO Auto-generated method stub
-		return 0;
+		try{
+			manaMapper.deleteManaById(manaId);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return 0;
+		}
+		return 1;
 	}
 
 	@Override
 	public int deleteMana(String manaIdList) {
 		// TODO Auto-generated method stub
-		return 0;
+		try{
+		String manaId[]=manaIdList.split(",");
+		for(String id:manaId){
+			int idd=Integer.parseInt(id);
+			deleteMana(idd);
+		}}
+		catch (Exception e){
+			e.printStackTrace();
+			return 0;
+		}
+		return 1;
 	}
 
 	@Override
@@ -295,6 +340,12 @@ public class ManaServiceImpl implements ManaService{
 	public int deleteYingPing(String YingPingIdList) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public Ad updateAd(Ad ad) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
