@@ -8,6 +8,7 @@ import com.hzyc.Zee.bean.HD;
 import com.hzyc.Zee.bean.HY;
 import com.hzyc.Zee.bean.HYType;
 import com.hzyc.Zee.bean.Hall;
+import com.hzyc.Zee.bean.Mana;
 import com.hzyc.Zee.bean.Movie;
 import com.hzyc.Zee.bean.Order;
 import com.hzyc.Zee.bean.Page;
@@ -15,7 +16,18 @@ import com.hzyc.Zee.bean.SJ;
 
 //一些影院管理员操作接口
 public interface CManaService {
-	
+	/**
+	 * @author Zeeephr
+	 * @date   2017年10月1日	
+	 * 登陆
+	 */
+	public Mana login(Mana mana);
+	/**
+	 * @author Zeeephr
+	 * @date   2017年10月1日	
+	 * 注销
+	 */
+	public void logout();
 	/**
 	 * @author Zeeephr
 	 * @date   2017年10月1日	

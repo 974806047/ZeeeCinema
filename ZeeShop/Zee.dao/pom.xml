@@ -6,4 +6,18 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>Zee.dao</artifactId>
+  
+  <dependencies>
+		<dependency>
+			<groupId>com.hzyc</groupId>
+			<artifactId>Zee.Com</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.hzyc</groupId>
+			<artifactId>Zee.Cli</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>

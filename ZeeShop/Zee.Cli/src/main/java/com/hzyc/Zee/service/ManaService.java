@@ -2,6 +2,8 @@ package com.hzyc.Zee.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.hzyc.Zee.bean.Ad;
 import com.hzyc.Zee.bean.CMana;
 import com.hzyc.Zee.bean.Cinema;
@@ -19,7 +21,18 @@ import com.hzyc.Zee.bean.YingPing;
  */
 public interface ManaService {
 
-	
+	/**
+	 * @author Zeeephr
+	 * @date   2017年10月1日	
+	 * 登陆
+	 */
+	public Mana login(Mana mana,HttpServletRequest request);
+	/**
+	 * @author Zeeephr
+	 * @date   2017年10月1日	
+	 * 注销
+	 */
+	public void logout();
 	/**
 	 * @author Zeeephr
 	 * @date   2017�?9�?19�?	
@@ -142,6 +155,12 @@ public interface ManaService {
 	 * 通过以，分割adId的字符串批量删除广告
 	 */
 	public int deleteAd(String adIdList);
+	/**
+	 * @author Zeeephr
+	 * @date   2017年10月9日	
+	 * 更新广告信息
+	 */
+	public Ad updateAd(Ad ad);
 	/**
 	 * @author Zeeephr
 	 * @date   2017�?9�?19�?	
