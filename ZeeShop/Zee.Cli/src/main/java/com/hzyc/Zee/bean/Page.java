@@ -12,6 +12,9 @@ public class Page {
 	//��ҳ��
 	private int pageNum;
 	
+	String where;
+	
+	
 	public void initStartPosition(){
 		startPosition = (nowPage-1)*perPageLine;
 	}
@@ -47,6 +50,12 @@ public class Page {
 	}
 	public void setPageNum(int pageNum) {
 		this.pageNum = pageNum;
+	}
+	public String getWhere() {
+		return where;
+	}
+	public void setWhere(String where) {
+		this.where = where;
 	}
 	
 	

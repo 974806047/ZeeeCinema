@@ -123,7 +123,7 @@ public interface ManaService {
 	 * @date   2017�?9�?19�?	
 	 * 分发电影到各个影院
 	 */
-	public int fenFaMovie(Movie movie,String cinemaNameList);
+	public int fenFaMovie(Movie movie,String cinemaIdList);
 	/**
 	 * @author Zeeephr
 	 * @date   2017�?9�?19�?	
