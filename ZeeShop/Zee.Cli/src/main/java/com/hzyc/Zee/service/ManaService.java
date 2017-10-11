@@ -38,7 +38,7 @@ public interface ManaService {
 	 * @date   2017�?9�?19�?	
 	 * 判断该管理院有无权限
 	 */
-	public boolean haveRight(String userName,String rightName);
+	public boolean haveRight(HttpServletRequest request,String rightName);
 	/**
 	 * @author Zeeephr
 	 * @date   2017�?9�?19�?	

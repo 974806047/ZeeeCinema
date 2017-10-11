@@ -75,10 +75,12 @@ public class ManaServiceImpl implements ManaService{
 	}
 
 	@Override
-	public boolean haveRight(String userName, String rightName) {
+	public boolean haveRight(HttpServletRequest request, String rightName) {
 		// TODO Auto-generated method stub
 		boolean bol=false;
+		String userName;
 		try{
+			userName=request.getSession().getAttribute("userName").toString().trim();
 			Mana mana=manaMapper.getManaByUserName(userName);
 			String manaRight=mana.getRight();
 			if(manaRight.contentEquals(rightName)){//权限包含了就有这个权限

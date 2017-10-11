@@ -2,6 +2,8 @@ package com.hzyc.Zee.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.hzyc.Zee.bean.CMana;
 import com.hzyc.Zee.bean.CmanaRight;
 import com.hzyc.Zee.bean.HD;
@@ -21,7 +23,7 @@ public interface CManaService {
 	 * @date   2017年10月1日	
 	 * 登陆
 	 */
-	public Mana login(Mana mana);
+	public CMana login(CMana mana,HttpServletRequest request);
 	/**
 	 * @author Zeeephr
 	 * @date   2017年10月1日	
@@ -33,7 +35,7 @@ public interface CManaService {
 	 * @date   2017年10月1日	
 	 * 判断该管理员有无cmanaRight权限
 	 */
-	public boolean haveRight(String cmanaRightName);
+	public boolean haveRight(HttpServletRequest request,String cmanaRightName);
 	
 	/**
 	 * @author Zeeephr
@@ -185,7 +187,7 @@ public interface CManaService {
 	 * @date   2017年10月1日	
 	 * 通过Page查找活动实现分页
 	 */
-	public HD queryHD(Page page);
+	public ArrayList<HD> queryHD(Page page);
 	
 	/*销售统计先不做*/
 	
