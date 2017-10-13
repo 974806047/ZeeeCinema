@@ -51,12 +51,12 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
-		<property name="mapperLocations" value="classpath:com/hzyc/topic/dao/mapper/*.xml"></property>
+		<property name="mapperLocations" value="classpath:com/hzyc/Zee/dao/mapper/*.xml"></property>
 	</bean>
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.hzyc.topic.dao" />
+		<property name="basePackage" value="com.hzyc.Zee.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 
@@ -82,7 +82,7 @@
 
 	<aop:config>
 		<aop:pointcut id="pc"
-			expression="execution(public * com.hzcy.topic.service.impl.*.*(..))" /> <!-- 把事务控制在Service层 -->
+			expression="execution(public * com.hzcy.Zee.service.impl.*.*(..))" /> <!-- 把事务控制在Service层 -->
 		<aop:advisor pointcut-ref="pc" advice-ref="userTxAdvice" />
 	</aop:config>
 	

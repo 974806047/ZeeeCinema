@@ -2,6 +2,8 @@ package com.hzyc.Zee.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.hzyc.Zee.bean.FanKui;
 import com.hzyc.Zee.bean.Message;
 import com.hzyc.Zee.bean.Movie;
@@ -42,20 +44,20 @@ public interface CustomerService {
 	 * @date   2017年9月20日	
 	 * 改变密码  这里未设置成密文  后期会修改
 	 */
-	public User changePassword(String password,User user);
+	public User changePassword(String oldpassword,String newpassword,HttpServletRequest req);
 	/**
 	 * @author Zeeephr
 	 * @date   2017年9月20日	\
 	 * 改变邮箱
 	 * 会向原邮箱发送信息
 	 */
-	public User changeMail(String mail ,User user);
+	public User changeMail(String mail ,HttpServletRequest req);
 	/**
 	 * @author Zeeephr
 	 * @date   2017年9月20日	
 	 * 修改电话号 会向原电话号发送信息确认
 	 */
-	public User changeTel(String tel,User user);	
+	public User changeTel(String oldtel,String newtel,HttpServletRequest req);	
 	/**
 	 * @author Zeeephr
 	 * @date   2017年9月20日	
@@ -164,11 +166,6 @@ public interface CustomerService {
 	 * 通过movieId查找movie 查看详情
 	 */
 	public Movie queryMovie(int movieId	);
-	/**
-	 * @author Zeeephr
-	 * @date   2017年9月21日	
-	 * 通过一些关键字查找电影
-	 */
-	public Movie queryMovie(String likeStr,Page page);
+
 
 }

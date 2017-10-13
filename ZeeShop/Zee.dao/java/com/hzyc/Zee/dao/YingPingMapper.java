@@ -10,5 +10,5 @@ public interface YingPingMapper {
 	public void deleteYingPingById(int yingPingId);
 	public ArrayList<YingPing> getYingPingByPage(Page page);
 	public YingPing getYingPingById(int yingPingId);
-	
+	public YingPing updateYingPing(YingPing yp);
 }
