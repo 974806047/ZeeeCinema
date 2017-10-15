@@ -3,5 +3,59 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.MovieMapper" >
-  
+  	<insert id="insertMovie" parameterType="Movie">
+  		insert into movie 
+  		(movie_moviename,movie_movieeditor,movie_sysj,movie_tjjl,movie_xgjl,movie_photoname,movie_photoname1,movie_photoname2,movie_photoname3,movie_photoname4,movie_filename,movie_scan,movie_time,movie_yymd)
+  		values
+  		(#{movieName},#{movieEditor},#{sysj},#{tjjl},#{xgjl},#{photoName},#{photoName1},#{photoName2},#{photoName3},#{photoName4},#{fileName},#{scan},#{time},#{yymd})
+  	</insert>
+  	<delete id="deleteMovieById" parameterType="Integer">
+  		delete from movie where movie_id =#{value}
+  	</delete>
+  	<update id="updateMovie" parameterType="Movie" >
+  		update movie set
+  		movie_moviename =#{movieName},
+  		movie_movieeditor =#{movieEditor},
+  		movie_sysj =#{sysj},
+  		movie_tjjl =#{tjjl},
+  		movie_xgjl =#{xgjl},
+  		movie_photoname =#{photoName},
+  		movie_photoname1 =#{photoName1},
+  		movie_photoname2 =#{photoName2},
+  		movie_photoname3 =#{photoName3},
+  		movie_photoname4 =#{photoName4},
+  		movie_filename =#{fileName},
+  		movie_scan =#{scan},
+  		movie_time =#{time},
+  		movie_yymd =#{yymd}
+  		where movie_id=#{id}
+  		
+  	</update>
+  	<select id="getMovieById" parameterType="Integer" resultMap="Movie" >
+  		select *from movie where movie_id=#{value}
+  	</select>
+  	<select id="getMovieByName" parameterMap="String" resultMap="Movie">
+  		select *from movie where movie_moviename=#{value}
+  	</select>
+  	<select id="getMovieByPage" parameterType="Page" resultMap="Movie">
+  		select *from movie where ${where} limit #{startPosition},#{perPageLine}
+  	</select>
+  	
+  	<resultMap type="Movie" id="Movie">
+  		<id column="movie_id" property="id"/>
+  		<result column="movie_moviename" property="movieName" />
+  		<result column="movie_movieeditor" property="movieEditor" />
+  		<result column="movie_sysj" property="sysj" />
+  		<result column="movie_tjjl" property="tjjl" />
+  		<result column="movie_xgjl" property="xgjl" />
+  		<result column="movie_photoname" property="photoName" />
+  		<result column="movie_photoname1" property="photoName1" />
+  		<result column="movie_photoname2" property="photoName2" />
+  		<result column="movie_photoname3" property="photoName3" />
+  		<result column="movie_photoname4" property="photoName4" />
+  		<result column="movie_filename" property="fileName" />
+  		<result column="movie_scan" property="scam" />
+  		<result column="movie_time" property="time" />
+  		<result column="movie_yymd" property="yymd" />
+  	</resultMap>
   </mapper>

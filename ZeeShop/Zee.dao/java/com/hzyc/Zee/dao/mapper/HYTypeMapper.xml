@@ -3,5 +3,35 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.HYTypeMapper" >
-  
+  <insert id="insertHYType" parameterType="HYType">
+  		insert into hytype 
+  		(hytype_name,hytype_cinemaid,hytype_cinemaname,hytype_tjjl,hytype_xgjl)
+  		values
+  		(#{name},#{cinemaid},#{cinemaname},#{tjjl},#{xgjl})
+  	</insert>
+  	<delete id="deleteHYTypeById" parameterType="Integer">
+  		delete hytype where hytype_id=#{id}
+  	</delete>
+  	<update id="updateHYType" parameterType="HYType">
+  		update hytype set
+  		hytype_name =#{name},
+  		hytype_cinemaid =#{cinemaid},
+  		hytype_cinemaname =#{cinemaname},
+  		hytype_xgjl =#{xgjl}
+  		where hytpe_id=#{id}
+  	</update>
+  	<select id="getHYTypeByPage" parameterType="Page" resultMap="HYType">
+  		select *from hytype where ${where} limit #{startPosition},#{perPageLine}
+  	</select>
+  	<select id="getHYTypeById" parameterType="Integer" resultMap="HYType">
+  		select *from hytype where hytype_id =#{value}
+  	</select>
+  	<resultMap type="HYType" id="HYType">
+  		<id column="hytype_id" property="id"/>
+  		<result column="hytype_name" property="name"/>
+  		<result column="hytype_cinemaid" property="cinemaid"/>
+  		<result column="hytype_cinemaname" property="cinemaname"/>
+  		<result column="hytype_tjjl" property="tjjl"/>
+  		<result column="hytype_xgjl" property="xgjl"/>
+  	</resultMap>
   </mapper>

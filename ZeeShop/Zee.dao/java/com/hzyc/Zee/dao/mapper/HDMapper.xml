@@ -3,5 +3,43 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.HDMapper" >
-  
+  	<insert id="insertHD" parameterType="HD">
+  		insert into hd 
+  		(hd_name,hd_bgtime,hd_endtime,hd_cinemaid,hd_hytypeid,hd_hytypename,hd_movieid,hd_price)
+  		values
+  		(#{name},#{bgTime},#{endTime},#{cinemaId},#{hyTypeId},#{hyTypeName},#{movieId},#{price})
+  	</insert>
+  	<delete id="deleteHDById" parameterType="Integer">
+  		delete from hd where id=#{value}
+  	</delete>
+  	<update id="updateHD" parameterType="HD">
+  		update hd set
+  		hd_name =#{name},
+  		hd_bgtime =#{bgTime},
+  		hd_endtime =#{endTime},
+  		hd_cinemaid =#{cinemaId},
+  		hd_hytypeid =#{hyTypeId},
+  		hd_hytypename =#{hyTypeName},
+  		hd_movieid =#{movieId},
+  		hd_price =#{price}
+  		where hd_id=#{id}
+  	</update>
+  	<select id="getHDByPage" parameterType="Page" resultMap="HD">
+  		select * from hd where ${where} limit #{startPosition},#{perPageLine}
+  	</select>
+  	<select id="getHDById" parameterType="Integer" resultMap="HD">
+  		select *from hd where id =#{value}
+  	</select>
+  	<resultMap type="HD" id="HD">
+  		<id column="hd_id" property="id"/>
+  		<result column="hd_name" property="name"/>
+  		<result column="hd_bgtime" property="bgTime"/>
+  		<result column="hd_endtime" property="endTime"/>
+  		<result column="hd_cinemaid" property="cinemaId"/>
+  		<result column="hd_hytypeid" property="hyTypeId"/>
+  		<result column="hd_hytypename" property="hyTypeName"/>
+  		<result column="hd_movieid" property="movieId"/>
+  		<result column="hd_price" property="price"/>
+  		
+  	</resultMap>
   </mapper>

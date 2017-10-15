@@ -3,5 +3,38 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.MessageMapper" >
-  
+  	<insert id="insertMessge" parameterType="Message">
+  		insert into message 
+  		(message_userid,message_username,message_havelook,message_text,message_tjjl,message_xgjl)
+  		values
+  		(#{userId},#{userName},#{haveLook},#{text},#{tjjl},#{xgjl})
+  	</insert>
+  	<delete id="deleteMessage" parameterType="Integer">
+  		delete from message where  message_id=#{id}
+  	</delete>
+  	<update id="updateMessage" parameterType="Message">
+  		update message set 
+  		message_userid=#{userId},
+  		message_username=#{userName},
+  		message_havelook=#{haveLook},
+  		message_text=#{text},
+  		message_tjjl=#{tjjl},
+  		message_xgjl=#{xgjl},
+  		where message_id =#{vale}
+  	</update>
+  	<select id="getMessageByPage" parameterType="Page" resultMap="Message">
+  		select *from message where ${where} limit #{startPosition},#{perPageLine}
+  	</select>
+  	<select id="getMessageById"  parameterType="Integer" resultMap="Message">
+  		select *from message where message_id =#{value}
+  	</select>
+  	<resultMap type="Message" id="Message">
+  		<id column="message_id" property="id"/>
+  		<result column="message_userid" property="userId"/>
+  		<result column="message_username" property="userName"/>
+  		<result column="message_havelook" property="haveLook"/>
+  		<result column="message_text" property="text"/>
+  		<result column="message_tjjl" property="tjjl"/>
+  		<result column="message_xgjl" property="xgjl"/>
+  	</resultMap>
   </mapper>

@@ -3,5 +3,41 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.HYMapper" >
-  
+  	<insert id="insertHY" parameterType="HY">
+  		insert into hy 
+  		(hy_userid,hy_username,hy_hytypeid,hy_hytypename,hy_cinemaname,hy_tjjl,hy_xgjl)
+  		values
+  		(#{userId},#{userName},#{hyTypeId},#{hyTypeName},#{cinemaName},#{tjjl},#{xgjl})
+  	</insert>
+  	<delete id="deleteHYById" parameterType="Integer">
+  		delete from hy where hy_id=#{value}
+  	</delete>
+  	<update id="updateHY" parameterType="HY">
+  		update hy set
+  		hy_userid =#{userId},
+  		hy_username =#{userName},
+  		hy_hytypeid =#{hyTypeId},
+  		hy_hytypename =#{hyTypeName},
+  		hy_cinemaname =#{cinemaName},
+  		hy_tjjl =#{tjjl},
+  		hy_xgjl =#{xgjl},
+  		where hy_id=#{id}
+  	</update>
+  	<select id="getHyById" parameterType="Integer" resultMap="HY">
+  		select *from hy where hy_id=#{value}
+  	</select>
+  	<select id="getHYByPage" parameterType="Page" resultMap="HY">
+  		select *from hy where ${where} limit #{startPosition},#{perPageLine}
+  	</select>
+  	<resultMap type="HY" id="HY">
+  		<id column="hy_id" property="id"/>
+  		<result column="hy_userid" property="userid"/>
+  		<result column="hy_username" property="username"/>
+  		<result column="hy_hytypeid" property="hytypeid"/>
+  		<result column="hy_hytypename" property="hytypename"/>
+  		<result column="hy_cinemaid" property="cinemaid"/>
+  		<result column="hy_cinemaname" property="cinemaname"/>
+  		<result column="hy_tjjl" property="tjjl"/>
+  		<result column="hy_xgjl" property="xgjl"/>
+  	</resultMap>
   </mapper>
