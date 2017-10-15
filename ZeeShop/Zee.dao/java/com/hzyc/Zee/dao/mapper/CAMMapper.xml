@@ -3,5 +3,53 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.CAMMapper" >
-  
+  	<insert id="insertCAM" parameterType="CAM">
+  		insert into CAM (cinemaid,movieid,cinemaname,moviename)
+  		values(#{cinemaId},#{movieId},#{cinemaName},#{movieName})
+  	</insert>
+  	<delete id="deleCAMById" parameterType="Integer">
+  		delete from cam where id=#{id}
+  	</delete>
+  	<select id="queryCAMByMovieName" parameterType="Page" resultMap="Cinema">
+  		select *from cinema where id=(select cinemaid from cam where moviename=${where})limit #{startPosition},#{perPageLine} 
+  	</select>
+  	<select id="queryCAMByCinemaId" parameterType="Page" resultMap="Movie"> 
+  		select *from movie where id =(select movieid from cam where cinemaid=${where})limit #{startPosition},#{perPageLine} 
+  	</select>
+  	
+  	<resultMap type="Movie" id="Movie">
+  		<id column="movie_id" property="id"></id>
+  		<result column="movie_moviename" property="movieName"/>
+  		<result column="movie_movieeditor" property="movieEdito"/>
+  		<result column="movie_sysj" property="sysj"/>
+  		<result column="movie_tjjl" property="tjjl"/>
+  		<result column="movie_xgjl" property="xgjl"/>
+  		<result column="movie_photoname" property="photoName"/>
+  		<result column="movie_photoname1" property="photoName1"/>
+  		<result column="movie_photoname2" property="photoName2"/>
+  		<result column="movie_photoname3" property="photoName3"/>
+  		<result column="movie_photoname4" property="photoName4"/>
+  		<result column="movie_filename" property="fileName"/>
+  		<result column="movie_scan" property="scan"/>
+  		<result column="movie_time" property="time"/>
+  		<result column="movie_yymd" property="yymd"/>
+  	</resultMap>
+  	<resultMap type="Cinema" id="Cinema">
+  		<id column="cinema_id" property="id"/>
+  		<result column="cinema_name" property="name"/>
+  		<result column="cinema_ip" property="ip"/>
+  		<result column="cinema_cmanaid" property="cmanaId"/>
+  		<result column="cinema_cmananame" property="cmanaName"/>
+  		<result column="cinema_cmanatel" property="cmanaTel"/>
+  		<result column="cinema_exactaddr" property="exactAddr"/>
+  		<result column="cinema_cmananum" property="cmanaNum"/>
+  		<result column="cinema_areacode" property="areaCode"/>
+  		<result column="cinema_provincename" property="provinceName"/>
+  		<result column="cinema_cityname" property="cityName"/>
+  		<result column="cinema_tjjl" property="tjjl"/>
+  		<result column="cinema_xgjl" property="xgjl"/>
+  		
+  		
+  		
+  	</resultMap>
   </mapper>

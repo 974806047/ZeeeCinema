@@ -3,5 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.CmanaRightMapper" >
-  
+  <insert id="insertCManaRight" parameterType="CmanaRight">
+  	insert into cmanaright (cmr_name,cmr_fatherid)value(#{name},#{fatherId})
+  </insert>
+  <delete id="deleteCManaRightById" parameterType="Integer">
+  	delete from cmanaright where cmr_id=#{value}
+  </delete>
+  <select id="getAllCManaRight" resultType="CmanaRight">
+  	select cmr_id id,cmr_name name,cmr_fatherid fatherId from camanright
+  </select>
   </mapper>

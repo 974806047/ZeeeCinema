@@ -3,5 +3,48 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.HallMapper" >
-  
+  	<insert id="insertHall" parameterType="Hall">
+  		insert into Hall (hall_cinemaid,hall_cinemaname,hall_number,hall_areacode,hall_provincename,hall_cityname,hall_areaname,hall_seatnumber,hall_typeid,hall_typename,hall_tjjl,hall_xgjl)
+  		values(#{cinemaId},#{cinemaName},#{number},#{areaCode},#{provinceName},#{cityName},#{areaName},#{seatNumber},#{typeId},#{typeName},#{tjjl},#{xgjl})
+  	</insert>
+  	<delete id="deleteHall" parameterType="Integer">
+  		delete from hall where hall_id =#{value}
+  	</delete>
+  	<resultMap type="Hall" id="Hall">
+  		<id column="hall_id" property="id"></id>
+  		<result column="hall_cinemaid" property="cinemaId"/>
+  		<result column="hall_cinemaname" property="cinemaName"/>
+  		<result column="hall_number" property="Number"/>
+  		<result column="hall_areacode" property="areaCode"/>
+  		<result column="hall_provincename" property="provinceName"/>
+  		<result column="hall_cityname" property="cityName"/>
+  		<result column="hall_areaname" property="areaName"/>
+  		<result column="hall_seatnumber" property="seatNumber"/>
+  		<result column="hall_typeid" property="typeId"/>
+  		<result column="hall_typename" property="typeName"/>
+  		<result column="hall_xgjl" property="xgjl"/>
+  		
+  	</resultMap>
+  	
+  	<update id="updateHall" parameterType="Hall">
+  		update Hall set hall_id =#{id},
+  		hall_cinemaid=#{cinemaId},
+  		hall_cinemaname=#{cinemaName},
+  		hall_number={Number},
+  		hall_areacode={areaCode},
+  		hall_provincename={provinceName},
+  		hall_cityname={cityName},
+  		hall_areaname={areaName},
+  		hall_seatnumber={seatNumber},
+  		hall_typeid={typeId},
+  		hall_typename={typeName},
+  		hall_xgjl={xgjl}
+  	</update>
+  	<select id="getHallById" parameterType="Integer" resultMap="Hall">
+  		select *from hall where hall_id=#{value}
+  	</select>
+  	<select id="getHallPage" parameterType="Page" resultMap="Hall">
+  		select *from hall where ${where} limit #{startPosition},#{perPageLine} 
+  	</select>
+  	
   </mapper>

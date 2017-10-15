@@ -3,5 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.AdMapper" >
-  
+  	<insert id="insertAd" parameterType="Ad">
+  		insert into Ad (ad_name,ad_title,ad_title1,ad_title2,ad_photo,ad_url,ad_tjjl,ad_xgjl) values(#{name},#{title},#{title1},#{title2},#{photo},#{url},#{tjjl},#{xgjl} )           
+  	</insert>
+  	<update id="updateAd" parameterType="Ad">
+  		update Ad set ad_name=#{name},ad_title=#{title},ad_title1=#{title1},ad_title2=#{title2},ad_photo=#{photo},ad_url=#{url},ad_tjjl=#{tjjl},ad_xgjl=#{xgjl}
+  	</update>
+  	<delete id="deleteAdById" parameterType="Integer">
+  		delete from Ad where ad_id=#{value}
+  	</delete>
+  	<select id="getAdByPage" parameterType="Page" resultMap="Ad">
+  		select *from Ad where ${where} limit #{startPosition},#{perPageLine}
+  	</select>
+  	<select id="getAdById" parameterType="Integer" resultMap="Ad">
+  		select *from Ad where ad_id=#{value}
+  	</select>
+  	
+  	
+  	<resultMap type="Ad" id="Ad">
+  		<id column="ad_id" property="id"/>
+  		<result column="ad_name" property="name"/>
+  		<result column="ad_title" property="title"/>
+  		<result column="ad_title1" property="title1"/>
+  		<result column="ad_title2" property="title2"/>
+  		<result column="ad_photo" property="photo"/>
+  		<result column="ad_url" property="url"/>
+  		<result column="ad_tjjl" property="tjjl"/>
+  		<result column="ad_xgjl" property="xgjl"/>
+  		
+  	</resultMap>
   </mapper>
