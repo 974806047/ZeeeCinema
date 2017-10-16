@@ -3,5 +3,53 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.UserMapper" >
-  	
+  	<insert id="insertUser" parameterType="User">
+  		insert into user 
+  		(user_username,user_password,user_name,user_age,user_tel,user_mail,user_ip,user_addr,user_sex,user_tjjl,user_xgjl)
+  		values
+  		(#{userName},#{password},#{name},#{age},#{tel},#{mail},#{ip},#{addr},#{sex},#{tjjl},#{xgjl})
+  	</insert>
+  	<delete id="deleteUserById" parameterType="Integer">
+  		delete from user where user_id=#{value}
+  	</delete>
+  	<update id="updateUser" parameterType="User">
+  		update user set 
+  		user_username=#{userName},
+  		user_password=#{password},
+  		user_name=#{name},
+  		user_age=#{age},
+  		user_tel=#{tel},
+  		user_mail=#{mail},
+  		user_ip=#{ip},
+  		user_addr=#{addr},
+  		user_sex=#{sex},
+  		user_tjjl=#{tjjl},
+  		user_xgjl=#{xgjl}
+  		
+  		where user_id=#{id}
+  	</update>
+  	<select id="getUserByPage" parameterType="Page" resultMap="User">
+  		select *from user where ${where} limit #{startPosition},#{perPageLine}
+  	</select>
+  	<select id="getUserByUserId" parameterType="Integer" resultMap="User">
+  		select *from user where user_id=#{value}
+  	</select>
+  	<select id="getUserByUserName" parameterType="String" resultMap="User">
+  		select *from user where user_username=#{value}
+  	</select>
+  	<resultMap type="User" id="User">
+  		<id column="user_id" property="id"/>
+  		<result column="user_username" property="userName"/>
+  		<result column="user_password" property="password"/>
+  		<result column="user_name" property="name"/>
+  		<result column="user_age" property="age"/>
+  		<result column="user_tel" property="tel"/>
+  		<result column="user_mail" property="mail"/>
+  		<result column="user_ip" property="ip"/>
+  		<result column="user_addr" property="addr"/>
+  		<result column="user_sex" property="sex"/>
+  		<result column="user_tjjl" property="tjjl"/>
+  		<result column="user_xgjl" property="xgjl"/>
+  		
+  	</resultMap>
   </mapper>

@@ -3,5 +3,45 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.SJMapper" >
-  	
+  	<insert id="insertSJ" parameterType="SJ">
+  		insert into sj
+  		(sj_movieid,sj_cinemaid,sj_moviename,sj_cinemaname,sj_now,sj_cretecmanaid,sj_updatecmanaid,sj_tjjl,sj_xgjl)
+  		values
+  		(#{movieId},#{cinemaId},#{movieName},#{cinemaName},#{now},#{createCmanaId},#{updateCmanaId},#{tjjl},#{xgjl})
+  	</insert>
+  	<delete id="deleteSJById" parameterType="Integer" >
+  		delete from sj where sj_id=#{value}
+  	</delete>
+  	<update id="updateSJ" parameterType="SJ">
+  		update sj set
+  		sj_movidid =#{movieId},
+  		sj_cinemaid =#{cinemaId},
+  		sj_moviename =#{movieName},
+  		sj_cinemaname =#{cinemaName},
+  		sj_now =#{now},
+  		sj_createcmanaid =#{createCmanaId},
+  		sj_updatecmanaid =#{updateCmanaId},
+  		sj_tjjl =#{tjjl},
+  		sj_xgjl =#{xgjl}
+  		where sj_id=#{id}
+  	</update>
+  	<select id="getSjById" parameterType="Integer" resultMap="SJ">
+  		select *from sj where sj_id =#{value}
+  	</select>
+  	<select id="getSJByPage" parameterType="SJ">
+  		select *from sj where ${where} limit #{startPosition},#{perPageLine}
+  	</select>
+  	<resultMap type="SJ" id="SJ">
+  		<id column="sj_id" property="id"/>
+  		<result column="sj_movieid" property="movieId"/>
+  		<result column="sj_cinemaid" property="cinemaId"/>
+  		<result column="sj_moviename" property="movieName"/>
+  		<result column="sj_cinemaname" property="cinemaName"/>
+  		<result column="sj_now" property="now"/>
+  		<result column="sj_createcmanaId" property="createCmanaId"/>
+  		<result column="sj_updatecmanaId" property="updateCmanaId"/>
+  		<result column="sj_tjjl" property="tjjl"/>
+  		<result column="sj_xgjl" property="xgjl"/>
+  		
+  	</resultMap>
   </mapper>

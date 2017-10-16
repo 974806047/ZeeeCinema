@@ -3,5 +3,46 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.YingPingMapper" >
-  	
+  	<insert id="insertYingPing" parameterType="YingPing">
+  		insert into yingping
+  		(yp_userid,yp_username,yp_movieid,yp_moviename,yp_text,yp_level,yp_zang,yp_tjjl,yp_xgjl)
+  		values
+  		(#{userId},#{userName},#{movieId},#{movieName},#{text},#{level},#{zang},#{tjjl},#{xgjl})
+  	</insert>
+  	<delete id="deleteYingPingById" parameterType="Integer">
+  		delete from yingping where yp_id=#{value}
+  	</delete>
+  	<update id="updateYingPing" parameterType="YingPing">
+  		update yingping set
+  		yp_userid =#{userId},
+  		yp_username =#{userName},
+  		yp_movieid =#{movieId},
+  		yp_moviename =#{movieName},
+  		yp_text =#{text},
+  		yp_level =#{level},
+  		yp_zang =#{zang},
+  		yp_xgjl =#{xgjl},
+  		yp_tjjl =#{tjjl}
+  		
+  		where yp_id=#{id}
+  	</update>
+  	<select id="getYingPingById" parameterType="Integer" resultMap="YP">
+  		select *from yingping where yp_id =#{value}
+  	</select>
+  	<select id="getYingPingByPage" parameterType="Page" resultMap="YP">
+  		select *from yingping where ${where} limit #{startPosition},#{perPageLine}
+  	</select>
+  	<resultMap type="YingPing" id="YP">
+  		<id column="yp_id" property="id"/>
+  		<result column="yp_userid" property="userId"/>
+  		<result column="yp_username" property="userName"/>
+  		<result column="yp_movieid" property="movieId"/>
+  		<result column="yp_moviename" property="movieName"/>
+  		<result column="yp_text" property="text"/>
+  		<result column="yp_level" property="level"/>
+  		<result column="yp_zang" property="zang"/>
+  		<result column="yp_xgjl" property="xgjl"/>
+  		<result column="yp_tjjl" property="tjjl"/>
+  		
+  	</resultMap>
   </mapper>

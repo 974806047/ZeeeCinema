@@ -3,5 +3,70 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.OrderMapper" >
-  
+  	<insert id="insertOrder" parameterType="Order">
+  		insert into order
+  		(order_userid,order_username,order_movieid,
+  		order_moviename,order_movieeditor,order_movieyymd,order_ppid,
+  		order_seatid,order_seatcnname,order_saetenname,order_hallid,
+  		order_hallname,order_cinemaid,order_cinemaname,order_pptime,
+  		order_tjjl,order_xgjl)
+  		values
+  		(#{userId},#{userName},#{movieId},#{movieName},#{movieEditor},
+  		#{movieyym},#{ppId},#{seatId},#{seatCnName},#{seatEnName},#{hallId}
+  		,#{hallName},#{cinemaId},#{cinemaName},#{ppTime},#{tjjl}
+  		,#{xgjl})
+  	</insert>
+  	<delete id="deleteOrderById" parameterType="Integer" >
+  		delete from order where order_id=#{value}
+  	</delete>
+  	<update id="updateOrder" parameterType="Order">
+  		update order set
+  		order_userid =#{userId},
+  		order_username =#{userName},
+  		order_movieid =#{movieId},
+  		order_moviename =#{movieName},
+  		order_movieeditor =#{movieEditor},
+  		order_movieyymd =#{movieyymd},
+  		order_ppid =#{ppId},
+  		order_seatid =#{seatId},
+  		order_seatcnname =#{seatCnName},
+  		order_saetenname =#{saetEnName},
+  		order_hallid =#{hallId},
+  		order_hallname =#{hallName},
+  		order_cinemaid =#{cinemaId},
+  		order_cinemaname =#{cinemaName},
+  		order_pptime =#{ppTime},
+  		order_tjjl =#{tjjl},
+  		order_xgjl =#{xgjl}
+  		
+  		where order_id=#{id}
+  	</update>
+  	<select id="getOrderById" parameterType="Integer" resultMap="Order">
+  		select *from order where order_id=#{value}
+  	</select>
+  	<select id="getOrderByPage" parameterType="Page" resultMap="Order">
+  		select *from order where ${where} limit #{startPosition},#{perPageLine}
+  	</select>
+  	<resultMap type="Order" id="Order">
+  		<id column="order_id" property="id"/>
+  		<result  column="order_userid" property="userId"/>
+  		<result  column="order_username" property="userName"/>
+  		<result  column="order_movieid" property="movieId"/>
+  		<result  column="order_moviename" property="movieName"/>
+  		<result  column="order_movieeditor" property="movieEditor"/>
+  		<result  column="order_movieyymd" property="movieyymd"/>
+  		<result  column="order_ppid" property="ppId"/>
+  		<result  column="order_seatid" property="seatId"/>
+  		<result  column="order_seatcnname" property="seatCnName"/>
+  		<result  column="order_seatenname" property="seatEnName"/>
+  		<result  column="order_hallid" property="hallId"/>
+  		<result  column="order_hallname" property="hallName"/>
+  		<result  column="order_cinemaid" property="cinemaId"/>
+  		<result  column="order_cinemaname" property="cinemaName"/>
+  		<result  column="order_pptime" property="ppTime"/>
+  		<result  column="order_tjjl" property="tjjl"/>
+  		<result  column="order_xgjl" property="xgjl"/>
+  		
+  		
+  	</resultMap>
   </mapper>
