@@ -3,5 +3,65 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.CManaMapper" >
-  
+  	<insert id="insertCMana" parameterType="CMana">
+  		insert into cmana 
+  		(cmana_username,cmana_password,cmana_right,cmana_highright,
+  		cmana_age,cmana_tel,cmana_mail,cmana_sex,cmana_cinemaid,
+  		cmana_cinemaname,cmana_name,cmana_tjjl,cmana_xgjl,cmana_giveright)
+  		values 
+  		(#{userName},#{password},#{right}
+  		,#{highRight},#{age},#{tel}
+  		,#{mail},#{sex},#{cinemaId},
+  		#{cinemaName},#{name},#{tjjl},#{xgjl},
+  		#{giveRight})
+  		
+  	</insert>
+  	<delete id="deleteCManaById" parameterType="Integer">
+  		delete from cmana where cmana_id=#{value}
+  	</delete>
+  	<update id="updateCMana" parameterType="CMana">
+  		update cmana set
+  		cmana_username=#{userName},
+  		cmana_password=#{password},
+  		cmana_right=#{right},
+  		cmana_highright=#{highRight},
+  		cmana_age=#{age},
+  		cmana_tel=#{tel},
+  		cmana_mail=#{mail},
+  		cmana_sex=#{sex},
+  		cmana_cinemaid=#{cinemaId},
+  		cmana_cinemaname=#{cinemaName},
+  		cmana_name=#{name},
+  		cmana_tjjl=#{tjjl},
+  		cmana_xgjl=#{xgjl},
+  		cmana_giveright=#{giveRight}
+  		where cmana_id=#{id}
+  	</update>
+  	<select id="getCManaByPage" parameterType="Page" resultMap="Cmana">
+  		select *from cmana where ${where} limit #{startPosition},#{perPageLine}
+  	</select>
+  	<select id="getCManaById" parameterType="Integer" resultMap="Cmana">
+  		select *from cmana where cmana_id=#{value}
+  	</select>
+  	<select id="getCManaByName" parameterType="String" resultMap="Cmana">
+  		select *from cmana where cmana_name=#{value}
+  	</select>
+  	<resultMap type="Cmana" id="Cmana">
+  		<id column="cmana_}，id"/>
+  		<result column="cmana_username" property="userName"/>
+  		<result column="cmana_password" property="password"/>
+  		<result column="cmana_right" property="right"/>
+  		<result column="cmana_highright" property="highRight"/>
+  		<result column="cmana_age" property="age"/>
+  		<result column="cmana_tel" property="tel"/>
+  		<result column="cmana_mail" property="mail"/>
+  		<result column="cmana_sex" property="sex"/>
+  		<result column="cmana_cinemaid" property="cinemaId"/>
+  		<result column="cmana_cinemaname" property="cinemaName"/>
+  		<result column="cmana_name" property="name"/>
+  		<result column="cmana_tjjl" property="tjjl"/>
+  		<result column="cmana_xgjl" property="xgjl"/>
+  		<result column="cmana_giveright" property="giveRight"/>
+  		
+  	</resultMap>
   </mapper>

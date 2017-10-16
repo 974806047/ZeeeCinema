@@ -3,5 +3,66 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.ManaMapper" >
-  
+  	<insert id="insertMana" parameterType="Mana">
+  		insert into mana 
+  		(mana_username,mana_password,mana_right,mana_highright,
+  		mana_age,mana_tel,mana_mail,mana_sex,mana_cinemaid,
+  		mana_cinemaname,mana_name,mana_tjjl,mana_xgjl,mana_giveright)
+  		values
+  		(#{userName},#{password},#{right},#{highRight},
+  		#{age},#{tel},#{mail},#{sex},
+  		#{cinemaId},#{cinemaName},#{name},#{tjjl},#{xgjl},
+  		#{giveRight})
+  	</insert>
+  	<delete id="deleteManaById" parameterType="Integer">
+  		delete from mana where mana_id=#{value}
+  	 </delete>
+  	 <update id="updateMana" parameterType="Mana">
+  	 	update mana set 
+  	 	mana_username=#{userName},
+		mana_password=#{password},
+		mana_right=#{right},
+		mana_highright=#{highRight},
+		mana_age=#{age},
+		mana_tel=#{tel},
+		mana_mail=#{mail},
+		mana_sex=#{sex},
+		mana_cinemaid=#{cinemaId},
+		mana_cinemaname=#{cinemaName},
+		mana_name=#{name},
+		mana_tjjl=#{tjjl},
+		mana_xgjl=#{xgjl},
+		mana_giveright=#{giveRight}
+  	 	where mana_id=#{id}
+  	 </update>
+  	 <select id="getAllMana" resultMap="Mana">
+  	 	select *from mana
+  	 </select>
+  	 <select id="getManaByUserName" parameterType="String" resultMap="Mana">
+  	 	select *from mana where mana_username=#{value}
+  	 </select>
+  	 <select id="getManaByUserId" parameterType="Integer" resultMap="Mana">
+  	 	select *from mana where mana_id=#{value}
+  	 </select>
+  	 <select id="getManaByPage" parameterMap="Page" resultMap="Mana">
+  	 	select *from mana where ${where} limit #{startPosition},#{perPageLine}
+  	 </select>
+  	 <resultMap type="Mana" id="Mana">
+		<id column="mana_id" property="id"/>
+		<result column="mana_username" property="userName"/>
+		<result column="mana_password" property="password"/>
+		<result column="mana_right" property="right"/>
+		<result column="mana_highright" property="highRight"/>
+		<result column="mana_age" property="age"/>
+		<result column="mana_tel" property="tel"/>
+		<result column="mana_mail" property="mail"/>
+		<result column="mana_sex" property="sex"/>
+		<result column="mana_cinemaid" property="cinemaId"/>
+		<result column="mana_cinemaname" property="cinemaName"/>
+		<result column="mana_name" property="name"/>
+		<result column="mana_tjjl" property="tjjl"/>
+		<result column="mana_xgjl" property="xgjl"/>
+		<result column="mana_giveright" property="giveRight"/>
+		
+  	 </resultMap>
   </mapper>

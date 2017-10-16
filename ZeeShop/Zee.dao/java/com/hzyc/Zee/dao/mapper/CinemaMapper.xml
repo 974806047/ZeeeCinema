@@ -3,5 +3,58 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.CinemaMapper" >
- 	
+ 	<insert id="insertCinema" parameterType="Cinema">
+ 		insert into cinema 
+ 		(cinema_name,cinema_ip,cinema_cmanaid,cinema_cmananame,
+ 		cinema_cmanatel,cinema_exactaddr,cinema_cmananum,cinema_areacode,
+ 		cinema_areaname,cinema_provincename,cinema_cityname,cinema_tjjl,cinema_xgjl)
+ 		values
+ 		(#{name},#{ip},#{cmanaId},#{cmanaName},
+ 		#{cmanaTel},#{exactAddr},#{cmanaNum},#{areaCode},#{areaName},
+ 		#{provinceName},#{cityName},#{tjjl},#{xgjl})
+ 	</insert>
+ 	<delete id="deleteCinemaId" parameterType="Integer">
+ 		delete from cinema where cinema_id=#{value}
+ 	</delete>
+ 	<update id="updateCinema" parameterType="Cinema">
+ 		update cinema  set
+ 		cinema_name=#{name},
+ 		cinema_ip=#{ip},
+ 		cinema_cmanaid=#{cmanaId},
+ 		cinema_cmananame=#{cmanaName},
+ 		cinema_cmanatel=#{cmanaTel},
+ 		cinema_exactaddr=#{exactAddr},
+ 		cinema_cmananum=#{cmanaNum},
+ 		cinema_areacode=#{areaCode},
+ 		cinema_areaname=#{areaName},
+ 		cinema_provincename=#{provinceName},
+ 		cinema_cityname=#{cityName},
+ 		cinema_tjjl=#{tjjl},
+ 		cinema_xgjl=#{xgjl}
+ 		
+ 		where cinema_id=#{id}
+ 	</update>
+ 	<select id="getCineamById" parameterType="Integer" resultMap="Cinema">
+ 		select *from cinema where cinema_id =#{value}
+ 	</select>
+ 	<select id="getCinemaByPage" parameterType="Page">
+ 		select *from cinema where ${where} limit #{startPosition},#{perPageLine}
+ 	</select>
+ 	<resultMap type="Cinema" id="Cinema">
+ 		<id column="cinema_id" property="id"/>
+ 		<result column="cinema_name" property="name"/>
+ 		<result column="cinema_ip" property="ip"/>
+ 		<result column="cinema_cmanaid" property="cmanaId"/>
+ 		<result column="cinema_cmananame" property="cmanaName"/>
+ 		<result column="cinema_cmanatel" property="cmanaTel"/>
+ 		<result column="cinema_exactaddr" property="exactAddr"/>
+ 		<result column="cinema_cmananum" property="cmanaNum"/>
+ 		<result column="cinema_areacode" property="areaCode"/>
+ 		<result column="cinema_areaname" property="areaName"/>
+ 		<result column="cinema_provincename" property="provinceName"/>
+ 		<result column="cinema_cityname" property="cityName"/>
+ 		<result column="cinema_tjjl" property="tjjl"/>
+ 		<result column="cinema_xgjl" property="xgjl"/>
+ 		
+ 	</resultMap>
   </mapper>
