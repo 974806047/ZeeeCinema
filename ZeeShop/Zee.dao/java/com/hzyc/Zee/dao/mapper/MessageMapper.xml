@@ -3,13 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.hzyc.Zee.dao.MessageMapper" >
-  	<insert id="insertMessge" parameterType="Message">
+  	<insert id="insertMessage" parameterType="Message">
   		insert into message 
   		(message_userid,message_username,message_havelook,message_text,message_tjjl,message_xgjl)
   		values
   		(#{userId},#{userName},#{haveLook},#{text},#{tjjl},#{xgjl})
   	</insert>
-  	<delete id="deleteMessage" parameterType="Integer">
+  	<delete id="deleteMessageById" parameterType="Integer">
   		delete from message where  message_id=#{id}
   	</delete>
   	<update id="updateMessage" parameterType="Message">

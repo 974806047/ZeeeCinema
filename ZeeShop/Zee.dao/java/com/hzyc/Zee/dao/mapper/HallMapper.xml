@@ -7,7 +7,7 @@
   		insert into Hall (hall_cinemaid,hall_cinemaname,hall_number,hall_areacode,hall_provincename,hall_cityname,hall_areaname,hall_seatnumber,hall_typeid,hall_typename,hall_tjjl,hall_xgjl)
   		values(#{cinemaId},#{cinemaName},#{number},#{areaCode},#{provinceName},#{cityName},#{areaName},#{seatNumber},#{typeId},#{typeName},#{tjjl},#{xgjl})
   	</insert>
-  	<delete id="deleteHall" parameterType="Integer">
+  	<delete id="deleteHallById" parameterType="Integer">
   		delete from hall where hall_id =#{value}
   	</delete>
   	<resultMap type="Hall" id="Hall">

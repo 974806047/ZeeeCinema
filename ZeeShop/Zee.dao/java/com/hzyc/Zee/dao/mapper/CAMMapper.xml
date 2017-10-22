@@ -7,7 +7,7 @@
   		insert into CAM (cinemaid,movieid,cinemaname,moviename)
   		values(#{cinemaId},#{movieId},#{cinemaName},#{movieName})
   	</insert>
-  	<delete id="deleCAMById" parameterType="Integer">
+  	<delete id="deleteCAMById" parameterType="Integer">
   		delete from cam where id=#{id}
   	</delete>
   	<select id="queryCAMByMovieName" parameterType="Page" resultMap="Cinema">

@@ -13,7 +13,7 @@
  		#{cmanaTel},#{exactAddr},#{cmanaNum},#{areaCode},#{areaName},
  		#{provinceName},#{cityName},#{tjjl},#{xgjl})
  	</insert>
- 	<delete id="deleteCinemaId" parameterType="Integer">
+ 	<delete id="deleteCinemaById" parameterType="Integer">
  		delete from cinema where cinema_id=#{value}
  	</delete>
  	<update id="updateCinema" parameterType="Cinema">
@@ -34,7 +34,7 @@
  		
  		where cinema_id=#{id}
  	</update>
- 	<select id="getCineamById" parameterType="Integer" resultMap="Cinema">
+ 	<select id="getCinemaById" parameterType="Integer" resultMap="Cinema">
  		select *from cinema where cinema_id =#{value}
  	</select>
  	<select id="getCinemaByPage" parameterType="Page">
